@@ -1,4 +1,5 @@
 FROM python:3.10.11
+RUN pip install --upgrade pip
 RUN pip install hrv-analysis
 RUN pip install flask
 COPY . .

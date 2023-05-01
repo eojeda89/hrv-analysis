@@ -13,12 +13,12 @@ def hello_world():
 
 
 def to_rr_milliseconds(x):
-    return int(60 / x * 1000)
+    return int(x * 1000)
 
 
 @app.route('/hrv-analysis')
 def hrv():
-    hr_list = [int(c) for c in request.args.get('list').split(',')]
+    hr_list = [float(c) for c in request.args.get('list').split(',')]
     rr_intervals_list = list(map(to_rr_milliseconds, hr_list))
     interpolated_nn_intervals = get_nn_intervals(rr_intervals_list, ectopic_beats_removal_method="malik")
     time_domain_features = get_time_domain_features(interpolated_nn_intervals).__str__()

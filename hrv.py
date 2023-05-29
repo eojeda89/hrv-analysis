@@ -32,7 +32,9 @@ def hrv():
         samp_en_domain_features.replace('{', '').replace('}', ''))
     return jsonify({'time_domain_features': time_domain_features, 'freq_domain_features': freq_domain_features,
                     'geo_domain_features': geo_domain_features,
-                    'non_linear_domain_features': non_linear_domain_features})
+                    'non_linear_domain_features': non_linear_domain_features,
+                    'total_items': len(rr_intervals_list),
+                    'interpolated_intervals': len(interpolated_nn_intervals)})
 
 
 if __name__ == '__main__':
